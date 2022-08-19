@@ -1,0 +1,25 @@
+ul{
+    padding: 20px 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+} 
+ul li {
+    color: #333;
+}
+.navStyle{
+    color: #333;
+    font-weight: 500;
+    padding: 6px 12px
+}
+.navStyle:hover{
+    text-decoration: none;
+    color: #8a2be2;
+    border-bottom: 2px solid #8a2be2;
+}
+.active{
+    color: #8a2be2;
+    border-bottom: 2px solid #8a2be2;
+}

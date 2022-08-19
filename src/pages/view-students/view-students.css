@@ -1,0 +1,40 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+th{
+    background-color: blueviolet;
+    color: #fff;
+}
+td, th{
+    padding: 12px 6px;
+    word-break: break-all;
+}
+tr{
+    border-bottom: 1px solid rgb(234, 213, 251);
+}
+td{
+    font-size: 14px;
+    font-weight: 500;
+}
+th:nth-child(5){
+    width: 140px;
+}
+.nodata{
+    font-weight: 700;
+}
+button{
+    border: none;
+    background-color: transparent;
+}
+.fa-pencil{
+    color: blueviolet;
+}
+.fa-trash{
+    color: rgb(217, 72, 72);
+}
+.rowimg{
+    width: 80px;
+    border-radius: 4px;
+    height: 80px;
+}

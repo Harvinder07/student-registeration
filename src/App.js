@@ -1,24 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import Routing from './Routing/routing';
+import StudentRegisteration from './pages/student-registration/student-registration';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import ViewStudent from './pages/view-students/view-students';
+import Header from './pages/header/header';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Provider store={store}>
+    <div className='container'>
+      <Header />
+      <Routing />
     </div>
+    </Provider>
   );
 }
 
