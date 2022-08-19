@@ -21,7 +21,7 @@ const ViewStudent = () => {
         setShowDeleteModal(false)
         setShowEditModal(false)
     }
-    let editStudentId;
+
     const editDetail = (idx) => {
         setEditId(idx);
         setShowEditModal(true);
@@ -45,7 +45,6 @@ const ViewStudent = () => {
                 </thead>
                 <tbody>
                     {studentsList.map((student, idx) => {
-                        console.log('inside',idx)
                         return(
                             <tr key={student.firstname + idx}>
                                 <td><img className='rowimg' src={student.imageURLs && student.imageURLs[0]} /></td>
@@ -72,9 +71,8 @@ const ViewStudent = () => {
             {
                 showDeleteModal && <Modal onclose={close}><p>Student entery has been deleted</p></Modal>
             }
-            {console.log(editStudentId, 'editStudentId')}
             {
-                showEditModal && <Modal onclose={close}><StudentRegisteration id={editId}/></Modal>
+                showEditModal && <Modal onclose={close}><StudentRegisteration type="edit" id={editId}/></Modal>
             }
         </>
     )

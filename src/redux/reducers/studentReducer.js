@@ -1,22 +1,8 @@
 import { ActionType } from "../constant/action-type";
 
 const initialState = {
-    student:[
-        // {
-        //     firstname: 'harvinder',
-        //     lastname: 'singh',
-        //     fathername: 'Pritam Singh',
-        //     emailid: 'harvinderasingh0703@gmail.com',
-        //     address: 'jawahar nagar',
-        //     mobile: 9876543210,
-        //     gender: 'male',
-        //     dob: '03071992',
-        //     country: 'india'
-        // }
-    ]
+    student:[]
 }
-
-console.log(initialState, 'iniria;lmamsd')
 
 export const studentReducer = (state = initialState, {type, payload}) => {
     switch (type) {

@@ -6,6 +6,7 @@
     border-radius: 4px;
     padding: 8px 20px;
     border: 1px solid blueviolet;
+    margin: 20px 0;
 }
 
 .outline{
@@ -16,4 +17,7 @@
     border-radius: 4px;
     padding: 8px 20px;
     border: 1px solid blueviolet;
+}
+.full{
+    width: 100%;
 }

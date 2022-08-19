@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import Button from '../../component/Button/Button';
 import TextInput from '../../component/Input/TextInput';
 import TextArea from '../../component/TextArea/TextArea';
@@ -8,6 +9,7 @@ import { addStudent } from '../../redux/action/studentAction';
 import Radio from '../../component/Radio/Radio';
 import PropTypes from 'prop-types'
 
+
 const StudentRegisteration = ({
     id,
     type
@@ -15,6 +17,7 @@ const StudentRegisteration = ({
     const [data, setData] = useState({}); 
     const [imageURLs, setImageURLs] = useState([]);
     const dispatch = useDispatch();  
+    const history = useNavigate();
     const studentsList = useSelector((state) => state.allStudents.student);
     useEffect(() => {
         if(id !== undefined && type === 'edit'){
@@ -22,8 +25,6 @@ const StudentRegisteration = ({
         }
     }, [])
     const handleChange = (event) => {
-        console.log(data, 'data')
-
         setData({
             ...data,
             [event.target.name]: event.target.value
@@ -31,21 +32,18 @@ const StudentRegisteration = ({
     }
     const submit = (e) => {
         e.preventDefault();
-        if(id){
-            console.log(studentsList[id], '111');
-            console.log(...studentsList, '222');
-            console.log(studentsList[id], '333')
+        if(id && type === 'edit'){
             studentsList[id] = {...studentsList[id], ...data}
         } else{
             const finalData = {...data, imageURLs}
             dispatch(addStudent(finalData));
             e.target.reset()
+            history('/view-student')
         }
     }
 
     const fileSelectHandler = (e) => {
         const [ file ] = e.target.files
-        console.log(file,'file')
         const newImageURL = URL.createObjectURL(file);
         setImageURLs([...imageURLs, newImageURL]);
     };
@@ -102,7 +100,7 @@ const StudentRegisteration = ({
                 maxlength={10}
                 changed={handleChange}
             />
-            <div>
+            <div className='mb-3'>
                 <label>Select Gender</label>
                 <Radio 
                     name="gender"
@@ -123,6 +121,7 @@ const StudentRegisteration = ({
             <div className='form-group'>
                 <label>Country</label>
                 <select className='form-control' name='country' onChange={handleChange}>
+                    <option value="" disabled>Select Country</option>
                     <option value="India">India</option>
                     <option value="Singapore">Singapore</option>
                     <option value="America">America</option>
@@ -154,7 +153,7 @@ const StudentRegisteration = ({
                 </div>
             </div>
 
-            <Button text="Submit" type="submit" variant="primary"/>
+            <div className='mt-2'><Button text="Submit" type="submit" width="full" variant="primary"/></div>
 
         </form>
     )

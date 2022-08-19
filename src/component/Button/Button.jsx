@@ -5,14 +5,15 @@ const Button = ({
     btnType,
     clicked,
     variant,
-    text
+    text,
+    width
 }) => {
     return(
         <>
             <button 
                 type={btnType}
                 onClick={clicked}
-                className= {variant}
+                className= {`${variant} ${width}`}
             >{text}</button>
         </>
     )
