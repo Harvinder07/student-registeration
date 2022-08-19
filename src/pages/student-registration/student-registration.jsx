@@ -6,16 +6,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import './student-registration.css'
 import { addStudent } from '../../redux/action/studentAction';
 import Radio from '../../component/Radio/Radio';
+import PropTypes from 'prop-types'
 
 const StudentRegisteration = ({
     id,
+    type
 }) => {
     const [data, setData] = useState({}); 
     const [imageURLs, setImageURLs] = useState([]);
     const dispatch = useDispatch();  
     const studentsList = useSelector((state) => state.allStudents.student);
     useEffect(() => {
-        if(id){
+        if(id !== undefined && type === 'edit'){
             setData(studentsList[id])
         }
     }, [])
@@ -104,17 +106,17 @@ const StudentRegisteration = ({
                 <label>Select Gender</label>
                 <Radio 
                     name="gender"
-                    value={(studentsList[id] && studentsList[id].gender) || data.gender}
+                    value={data.gender}
                     changed={handleChange}
                     options={gender}
-                    selected={studentsList[id] && studentsList[id].gender}
+                    selected={data.gender || studentsList[id] && studentsList[id].gender}
                 />
             </div>
             <TextInput 
                 label="DOB"
                 name="dob"
                 inputType="date"
-                inputValue={(studentsList[id] && studentsList[id].dob) || data.dob}
+                inputValue={data.dob}
                 placeholder="Date of Birth"
                 changed={handleChange}
             />
@@ -157,5 +159,10 @@ const StudentRegisteration = ({
         </form>
     )
 }
+
+StudentRegisteration.propTypes = {
+    id: PropTypes.number,
+    type:PropTypes.string
+  };
 
 export default StudentRegisteration
